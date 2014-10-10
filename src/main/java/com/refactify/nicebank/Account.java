@@ -1,6 +1,8 @@
 package com.refactify.nicebank;
 
-public class Account {
+import org.javalite.activejdbc.Model;
+
+public class Account extends Model {
     private TransactionQueue queue = new TransactionQueue();
 
     public void credit(Money amount) {
@@ -12,7 +14,16 @@ public class Account {
         queue.write("-" + amount.toString());
     }
 
+    public int getNumber() {
+        return getInteger("number");
+    }
+
     public Money getBalance() {
-        return BalanceStore.getBalance();
+        return new Money(getString("balance"));
+    }
+
+    public void setBalance(final Money amount) {
+        setString("balance", amount.toString().substring(1));
+        saveIt();
     }
 }
