@@ -99,7 +99,7 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.0.5</version>
                 <configuration>
-                    <changeLogFile>src/ain/resources/bank_schema.xml</changeLogFile>
+                    <changeLogFile>src/main/resources/bank_schema.xml</changeLogFile>
                     <driver>com.mysql.jdbc.Driver</driver>
                     <url>jdbc:mysql://localhost/bank</url>
                     <username>teller</username>
