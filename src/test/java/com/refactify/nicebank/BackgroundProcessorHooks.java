@@ -5,7 +5,7 @@ import cucumber.api.java.*;
 public class BackgroundProcessorHooks {
     private Thread transactionProcessorThread;
 
-    @Before
+    @Before(order = 4)
     public void startBackgroundThread() {
         transactionProcessorThread = new Thread() {
             @Override
