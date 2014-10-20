@@ -7,7 +7,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 public class AtmUserInterface implements Teller {
     private final EventFiringWebDriver webDriver;
 
-    public AtmUserInterface(final EventFiringWebDriver webDriver) {
+    public AtmUserInterface(final MyWebDriver webDriver) {
         this.webDriver = webDriver;
     }
 
