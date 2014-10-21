@@ -2,12 +2,15 @@ package com.refactify.nicebank;
 
 import cucumber.api.java.en.And;
 
+import javax.inject.Inject;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class CashSlotSteps {
     private CashSlot cashSlot;
 
+    @Inject
     public CashSlotSteps(final CashSlot cashSlot) {
         this.cashSlot = cashSlot;
     }
