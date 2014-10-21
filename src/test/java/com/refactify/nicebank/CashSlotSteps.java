@@ -1,21 +1,18 @@
 package com.refactify.nicebank;
 
-import com.google.inject.Inject;
 import com.refactify.support.TestCashSlot;
 import cucumber.api.java.en.And;
-import cucumber.runtime.java.guice.ScenarioScoped;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-@ScenarioScoped
+@ContextConfiguration("classpath:cucumber.xml")
 public class CashSlotSteps {
-    private CashSlot cashSlot;
 
-    @Inject
-    public CashSlotSteps(final TestCashSlot cashSlot) {
-        this.cashSlot = cashSlot;
-    }
+    @Autowired
+    private CashSlot cashSlot;
 
     @And("^\\$(\\d+) should be dispensed$")
     public void $ShouldBeDispensed(final int dollars) throws Throwable {

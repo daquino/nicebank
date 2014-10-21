@@ -1,10 +1,10 @@
 package com.refactify.nicebank;
 
 import cucumber.api.java.Before;
-import cucumber.runtime.java.guice.ScenarioScoped;
 import org.javalite.activejdbc.Base;
+import org.springframework.test.context.ContextConfiguration;
 
-@ScenarioScoped
+@ContextConfiguration("classpath:cucumber.xml")
 public class ResetHooks {
     @Before(order = 1)
     public void reset() {

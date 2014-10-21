@@ -1,8 +1,10 @@
 package com.refactify.support;
 
 import com.refactify.nicebank.CashSlot;
-import cucumber.runtime.java.guice.ScenarioScoped;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-@ScenarioScoped
+@Component
+@Scope("cucumber-glue")
 public class TestCashSlot extends CashSlot {
 }

@@ -1,24 +1,19 @@
 package com.refactify.nicebank;
 
-import com.google.inject.Inject;
 import com.refactify.support.TestAccount;
-import com.refactify.support.TestCashSlot;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import cucumber.runtime.java.guice.ScenarioScoped;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 
-@ScenarioScoped
+@ContextConfiguration("classpath:cucumber.xml")
 public class ServerHooks {
     public static final int PORT = 8887;
     private AtmServer server;
+    @Autowired
     private CashSlot cashSlot;
+    @Autowired
     private TestAccount account;
-
-    @Inject
-    public ServerHooks(final TestCashSlot cashSlot, final TestAccount account) {
-        this.cashSlot = cashSlot;
-        this.account = account;
-    }
 
     @Before(order = 2)
     public void startServer() throws Exception {

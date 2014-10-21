@@ -1,21 +1,16 @@
 package com.refactify.nicebank;
 
-import com.google.inject.Inject;
-import com.refactify.support.AtmUserInterface;
 import com.refactify.support.TestAccount;
 import cucumber.api.java.en.When;
-import cucumber.runtime.java.guice.ScenarioScoped;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 
-@ScenarioScoped
+@ContextConfiguration("classpath:cucumber.xml")
 public class TellerSteps {
+    @Autowired
     private Teller teller;
+    @Autowired
     private TestAccount account;
-
-    @Inject
-    public TellerSteps(final AtmUserInterface teller, final TestAccount account) {
-        this.teller = teller;
-        this.account = account;
-    }
 
     @When("^I withdraw \\$(\\d+)$")
     public void iRequest$(final int amount) throws Throwable {

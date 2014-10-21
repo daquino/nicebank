@@ -1,9 +1,10 @@
 package com.refactify.nicebank;
 
-import cucumber.api.java.*;
-import cucumber.runtime.java.guice.ScenarioScoped;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import org.springframework.test.context.ContextConfiguration;
 
-@ScenarioScoped
+@ContextConfiguration("classpath:cucumber.xml")
 public class BackgroundProcessorHooks {
     private Thread transactionProcessorThread;
 

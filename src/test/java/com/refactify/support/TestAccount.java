@@ -1,9 +1,11 @@
 package com.refactify.support;
 
 import com.refactify.nicebank.Account;
-import cucumber.runtime.java.guice.ScenarioScoped;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-@ScenarioScoped
+@Component
+@Scope("cucumber-glue")
 public class TestAccount extends Account {
     public TestAccount() {
         super(1234);

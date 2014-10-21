@@ -1,24 +1,20 @@
 package com.refactify.nicebank;
 
-import com.google.inject.Inject;
 import com.refactify.nicebank.transforms.MoneyConverter;
 import com.refactify.support.TestAccount;
 import cucumber.api.Transform;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.runtime.java.guice.ScenarioScoped;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-@ScenarioScoped
+@ContextConfiguration("classpath:cucumber.xml")
 public class AccountSteps {
+    @Autowired
     private TestAccount account;
-
-    @Inject
-    public AccountSteps(final TestAccount account) {
-        this.account = account;
-    }
 
     @Given("^I have credited (\\$\\d+\\.\\d+) in my account$")
     public void iHaveDeposited$InMyAccount(@Transform(MoneyConverter.class) final Money amount) throws Throwable {
@@ -30,16 +26,14 @@ public class AccountSteps {
         int timeoutMilliSecs = 3000;
         int pollIntervalMilliSecs = 100;
         boolean assertionNotPassedYet = true;
-        while(assertionNotPassedYet) {
+        while (assertionNotPassedYet) {
             try {
                 assertThat(account.getBalance(), is(amount));
                 assertionNotPassedYet = false;
-            }
-            catch(AssertionError ae) {
+            } catch (AssertionError ae) {
                 try {
                     Thread.sleep(pollIntervalMilliSecs);
-                }
-                catch(InterruptedException e) {
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 timeoutMilliSecs -= pollIntervalMilliSecs;
