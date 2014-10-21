@@ -1,15 +1,19 @@
-package com.refactify.nicebank.transforms;
+package com.refactify.nicebank;
 
+import com.google.inject.Inject;
 import com.refactify.support.MyWebDriver;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import cucumber.runtime.java.guice.ScenarioScoped;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
+@ScenarioScoped
 public class WebDriverHooks {
     private final EventFiringWebDriver webDriver;
 
+    @Inject
     public WebDriverHooks(final MyWebDriver webDriver) {
         this.webDriver = webDriver;
     }

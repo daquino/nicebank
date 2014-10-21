@@ -1,14 +1,19 @@
 package com.refactify.nicebank;
 
+import com.google.inject.Inject;
+import com.refactify.support.TestCashSlot;
 import cucumber.api.java.en.And;
+import cucumber.runtime.java.guice.ScenarioScoped;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
+@ScenarioScoped
 public class CashSlotSteps {
     private CashSlot cashSlot;
 
-    public CashSlotSteps(final CashSlot cashSlot) {
+    @Inject
+    public CashSlotSteps(final TestCashSlot cashSlot) {
         this.cashSlot = cashSlot;
     }
 
