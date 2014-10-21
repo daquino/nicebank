@@ -1,6 +1,5 @@
 package com.refactify.nicebank;
 
-import com.refactify.support.TestCashSlot;
 import cucumber.api.java.en.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;

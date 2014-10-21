@@ -1,6 +1,5 @@
 package com.refactify.nicebank;
 
-import com.refactify.support.TestAccount;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ public class ServerHooks {
     @Autowired
     private CashSlot cashSlot;
     @Autowired
-    private TestAccount account;
+    private Account account;
 
     @Before(order = 2)
     public void startServer() throws Exception {

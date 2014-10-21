@@ -10,6 +10,15 @@
     <import resource="classpath:cucumber/runtime/java/spring/cucumber-glue.xml"/>
     <context:annotation-config/>
     <context:component-scan base-package="com.refactify.nicebank, com.refactify.support"/>
+    <bean class="com.refactify.support.AtmUserInterface" scope="cucumber-glue"/>
+    <bean class="com.refactify.nicebank.CashSlot" scope="cucumber-glue"/>
+    <bean class="com.refactify.support.AccountFactory" factory-method="createTestAccount"
+          lazy-init="true" scope="cucumber-glue"/>
+    <bean class="org.openqa.selenium.support.events.EventFiringWebDriver" scope="cucumber-glue" destroy-method="close">
+        <constructor-arg>
+            <bean class="org.openqa.selenium.firefox.FirefoxDriver" scope="cucumber-glue"/>
+        </constructor-arg>
+    </bean>
 
 
 </beans>

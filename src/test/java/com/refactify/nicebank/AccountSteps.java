@@ -1,7 +1,6 @@
 package com.refactify.nicebank;
 
 import com.refactify.nicebank.transforms.MoneyConverter;
-import com.refactify.support.TestAccount;
 import cucumber.api.Transform;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -14,7 +13,7 @@ import static org.hamcrest.core.Is.is;
 @ContextConfiguration("classpath:cucumber.xml")
 public class AccountSteps {
     @Autowired
-    private TestAccount account;
+    private Account account;
 
     @Given("^I have credited (\\$\\d+\\.\\d+) in my account$")
     public void iHaveDeposited$InMyAccount(@Transform(MoneyConverter.class) final Money amount) throws Throwable {
